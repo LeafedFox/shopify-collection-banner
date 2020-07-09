@@ -118,14 +118,16 @@
             </div>
           </div>
         </div>
+        <!-- Banner -->
         {% for block in section.blocks %}
-          {% if collection.id == block.settings.collection.id %}
-            <div id="banner" class="page-width" style="background-color: {{ block.settings.bannercolor }}; color: {{ block.settings.textcolor }}; padding: 1em;">
+          {% if block.settings.collection.id == collection.id %}
+            <div id="banner" class="page-width" style="background-color: {{ block.settings.bannercolor }}; color: {{ block.settings.textcolor }}; padding: 1em;" {{ block.shopify_attributes }}>
               <h2 class="text-center" style="font-size: {{ block.settings.headingfontsize }}">{{ block.settings.heading }}</h2>
               {% assign pstring = '<p style="color: ' | append: block.settings.textcolor | append: ';">' %}
               <span class="text-center" style="font-size: {{ block.settings.contentfontsize }};">{{ block.settings.content | replace: '<p>', pstring }}</span>
           {% endif %}
         {% endfor %}
+        <!-- end Banner -->
       </div>
     {% endif %}
   </header>
