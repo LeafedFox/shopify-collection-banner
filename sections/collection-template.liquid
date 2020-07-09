@@ -122,7 +122,7 @@
     {% endif %}
     {% for block in section.blocks %}
       {% if collection.id == block.settings.collection.id %}
-        <div id="banner">
+        <div id="banner" style="background-color: {{- block.settings.bannercolor -}}">
           <h2>{{ block.settings.heading }}</h2>
           {{ block.settings.content }}
       {% endif %}
@@ -513,6 +513,11 @@
           "id": "content",
           "type": "richtext",
           "label": "Banner content"
+        },
+        {
+          "id": "bannercolor",
+          "type": "color",
+          "label": "Banner Color"
         }
       ]
     }
