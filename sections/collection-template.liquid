@@ -123,7 +123,7 @@
             <div id="banner" class="page-width" style="background-color: {{ block.settings.bannercolor }}; color: {{ block.settings.textcolor }}; padding: 1em;">
               <h2 class="text-center" style="font-size: {{ block.settings.headingfontsize }}">{{ block.settings.heading }}</h2>
               {% assign pstring = '<p style="color: ' | append: block.settings.textcolor | append: ';">' %}
-              <span class="text-center" style="color: {{ block.settings.textcolor }} !important;">{{ block.settings.content | replace: '<p>', pstring }}</span>
+              <span class="text-center" style="font-size: {{ block.settings.contentfontsize }};">{{ block.settings.content | replace: '<p>', pstring }}</span>
           {% endif %}
         {% endfor %}
       </div>
@@ -547,6 +547,34 @@
           "id": "content",
           "type": "richtext",
           "label": "Banner content"
+        },
+        {
+          "id": "contentfontsize",
+          "type": "select",
+          "label": "Content font size",
+          "options": [
+            {
+              "group": "value",
+              "value": ".5em",
+              "label": "Small"
+            },
+            {
+              "group": "value",
+              "value": "1em",
+              "label": "Medium"
+            },
+            {
+              "group": "value",
+              "value": "2em",
+              "label": "Large"
+            },
+            {
+              "group": "value",
+              "value": "3em",
+              "label": "Extra Large"
+            }
+          ],
+          "default": "1em"
         },
         {
           "id": "bannercolor",
