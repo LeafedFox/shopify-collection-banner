@@ -118,15 +118,16 @@
             </div>
           </div>
         </div>
+        {% for block in section.blocks %}
+          {% if collection.id == block.settings.collection.id %}
+            <div id="banner" class="page-width" style="background-color: {{ block.settings.bannercolor }}; color: {{ block.settings.textcolor }}; padding: 1em;">
+              <h2 class="text-center">{{ block.settings.heading }}</h2>
+              {% assign pstring = '<p style="color: ' | append: block.settings.textcolor | append: ';">' %}
+              <span class="text-center" style="color: {{ block.settings.textcolor }} !important;">{{ block.settings.content | replace: '<p>', pstring }}</span>
+          {% endif %}
+        {% endfor %}
       </div>
     {% endif %}
-    {% for block in section.blocks %}
-      {% if collection.id == block.settings.collection.id %}
-        <div id="banner" style="background-color: {{- block.settings.bannercolor -}}">
-          <h2>{{ block.settings.heading }}</h2>
-          {{ block.settings.content }}
-      {% endif %}
-    {% endfor %}
   </header>
 
   <div class="page-width" id="Collection">
@@ -518,6 +519,12 @@
           "id": "bannercolor",
           "type": "color",
           "label": "Banner Color"
+        },
+        {
+          "id": "textcolor",
+          "type": "color",
+          "label": "Text Color",
+          "default": "#3a3a3a"
         }
       ]
     }
